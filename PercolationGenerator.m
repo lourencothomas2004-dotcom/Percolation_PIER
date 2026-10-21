@@ -3,7 +3,7 @@
 % fs (float) is the surface ratio of percolation
 % OverL (bool) is we want overlap or not
 
-function [S, tempFs, filename]=GeneratePercolation(Nx, Ny, r, fs, OverL)
+function [S, tempFs, filename]=PercolationGenerator(Nx, Ny, r, fs, OverL)
     maxAttempt = 1000;
     S = false(Nx, Ny);
 
