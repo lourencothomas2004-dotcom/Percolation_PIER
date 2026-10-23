@@ -3,7 +3,7 @@
 % fs (float) is the surface ratio of percolation
 % OverL (bool) is we want overlap or not
 
-function [S, tempFs]=PercolationGeneratorD(Nx, r, fs, OverL)
+function [S, tempFs]=PercolationGenerator1D(Nx, r, fs, OverL)
     maxAttempt = 1000;
     S = zeros(1, Nx);
 
@@ -30,7 +30,7 @@ function [S, tempFs]=PercolationGeneratorD(Nx, r, fs, OverL)
 end
 
 
-S = PercolationGeneratorD(512, 1, 0.2, false);
-figure;
-imagesc(S);
-colormap(hot)
+% = PercolationGenerator1D(512, 1, 0.2, false);
+%figure;
+%imagesc(S);
+%colormap(hot)
