@@ -3,20 +3,22 @@
 % fs (float) is the surface ratio of percolation
 % OverL (bool) is we want overlap or not
 
-function [S, tempFs, filename]=PercolationGenerator(Nx, Ny, r, fs, OverL)
+function [S, tempFs, filename]=PercolationGenerator(Nx, Ny, Lx, Ly, r, fs, OverL)
     maxAttempt = 1000;
     S = false(Nx, Ny);
-
-    [X, Y] = meshgrid(1:Ny, 1:Nx);
+    
+    X = linspace(0, Ly, Ny);
+    Y = linspace(0, Lx, Nx);
+    [X, Y] = meshgrid(X, Y);
     tempFs = 0;
     surface = (Nx*Ny);
     
     attempt = 0;
     while tempFs<fs && attempt<maxAttempt
-        x = randi([1,Ny]);
-        y = randi([1,Nx]);
+        x = rand()*Ly;
+        y = rand()*Lx;
 
-        TempCircle = ((X-x).^2 + (Y-y).^2) <= r^2;
+        TempCircle = ((X-x).^2 + (Y-y).^2) <= r^2; %((X-x).^2<=r^2 & (Y-y).^2<=r^2);
 
         Overlap = S & TempCircle;
         if ~any(Overlap(:)) || OverL
