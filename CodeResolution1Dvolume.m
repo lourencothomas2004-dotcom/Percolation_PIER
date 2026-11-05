@@ -13,7 +13,7 @@ Nx = 512; % Nb de points
 dx = Lx/(Nx-1); % Pas
 r = 6; % Rayon des charges (en points)
 fs = 0.2; % Fraction de charges
-kc = 10; % Conductivité charges
+kc = 1000; % Conductivité charges
 ki = 1; % Conductivité isolant
 
 [S, Fs] = PercolationGenerator1D(Nx, r, fs, false);
