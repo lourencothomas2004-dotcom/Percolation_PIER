@@ -13,7 +13,7 @@ Nx = 512; % Nb de points
 dx = Lx/(Nx-1); % Pas
 r = 6; % Rayon des charges (en points)
 fs = 0.2; % Fraction de charges
-kc = 1000; % Conductivité charges
+kc = 10; % Conductivité charges
 ki = 1; % Conductivité isolant
 
 [S, Fs] = PercolationGenerator1D(Nx, r, fs, false);
@@ -66,9 +66,9 @@ title('Conductivité'); xlabel('x (en m)'); ylabel('k'); grid on
 
 Phi = 2*dx*alpha.*(Tet(1:Nx-1)-Tet(2:Nx));
 
+
 figure;
 plot(x(1:Nx-1)+dx/2, Phi)
-ylim([0.9*mean(Phi) 1.1*mean(Phi)])
 xlabel('x (m)'); ylabel('Flux'); title('Flux aux interfaces')
 
 % Conductivité effective et vérification 
