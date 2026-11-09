@@ -9,5 +9,5 @@ function [f, keq] = Reso1Cas2D(Lx, Ly, r, fs, kc, ki, Nx, Ny)
 
     Phi = mean(sum((1./(1./k(1:Ny-1,:) + 1./k(2:Ny,:))).*(Tet(2:Ny,:)-Tet(1:Ny-1,:))*(2*dx/dy),2));
 
-    keq = Phi;
+    keq = Phi * (Nx-1) / Ny;
 end
