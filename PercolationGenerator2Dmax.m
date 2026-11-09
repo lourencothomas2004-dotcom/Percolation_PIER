@@ -5,7 +5,7 @@
 % fs (float) is the surface ratio of percolation
 % OverL (bool) is we want overlap or not
 
-function [S, tempFs, filename]=PercolationGenerator2Dmax(Nx, Ny, Lx, Ly, r, fs, OverL)
+function [S, tempFs, filename]=PercolationGenerator2Dmax(Nx, Ny, Lx, Ly, r, fs, OverL, save)
     maxAttempt = 1000;
     S = false(Nx, Ny);
     X = linspace(0, Ly, Ny);
@@ -29,5 +29,7 @@ end
 end
     S = sparse(S);
     filename = sprintf('Matrices/max_%d_%d_%d_0%.0f.h5', Nx, Ny, r, int16(tempFs*100));
-    SaveMatrix(S,filename);
+    if save
+        SaveMatrix(S,filename);
+    end
 end
