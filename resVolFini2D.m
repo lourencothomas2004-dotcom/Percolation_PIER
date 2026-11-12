@@ -84,4 +84,10 @@ function [X, k, dx, dy] = resVolFini2D(Nx, Ny, k, kc, ki, Lx, Ly)
     
     %Résolution
     X=A\B;
+
+    % Vérification du résidu de la solution
+    residual = norm(A*X - B, inf);
+    if residual > 1e-6
+        warning('Résidu élevé lors de la résolution : %g', residual);
+    end
 end

@@ -1,6 +1,6 @@
 function [f, keq] = Reso1Cas2D(Lx, Ly, r, fs, kc, ki, Nx, Ny)
 
-    [kl, f, filename]= PercolationGenerator2D(Nx, Ny, Lx, Ly, r, fs, false, false);
+    [kl, f, filename]= PercolationGenerator2D(Nx, Ny, Lx, Ly, r, fs, true, false);
     [X, k, dx, dy] = resVolFini2D(Nx, Ny, kl, kc, ki, Lx, Ly);
 
     Tet=reshape(X,Ny,Nx);
@@ -10,4 +10,6 @@ function [f, keq] = Reso1Cas2D(Lx, Ly, r, fs, kc, ki, Nx, Ny)
     Phi = mean(sum((1./(1./k(1:Ny-1,:) + 1./k(2:Ny,:))).*(Tet(2:Ny,:)-Tet(1:Ny-1,:))*(2*dx/dy),2));
 
     keq = Phi * (Nx-1) / Ny;
+
+    clear A;
 end

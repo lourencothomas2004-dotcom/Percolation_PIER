@@ -1,6 +1,6 @@
 function [fmin, keqMin, fmax, keqMax] = ResoMinMax2D(Lx, Ly, r, fs, kc, ki, Nx, Ny)
 
-    [kMin, fmin, filename]= PercolationGenerator2Dmin(Nx, Ny, Lx, Ly, r, fs, false, false);
+    [kMin, fmin, filename]= PercolationGenerator2Dmin(Nx, Ny, Lx, Ly, r, fs, true, false);
 
     [Xmin, kmin, dx, dy] = resVolFini2D(Nx, Ny, kMin, kc, ki, Lx, Ly);
 
@@ -12,7 +12,7 @@ function [fmin, keqMin, fmax, keqMax] = ResoMinMax2D(Lx, Ly, r, fs, kc, ki, Nx, 
 
     keqMin = Phi * (Nx-1) / Ny;
 
-    [kMax, fmax, filename]= PercolationGenerator2Dmax(Nx, Ny, Lx, Ly, r, fs, false, false);
+    [kMax, fmax, filename]= PercolationGenerator2Dmax(Nx, Ny, Lx, Ly, r, fs, true, false);
     [Xmax, kmax, dx, dy] = resVolFini2D(Nx, Ny, kMax, kc, ki, Lx, Ly);
 
     Tet=reshape(Xmax,Ny,Nx);
@@ -22,4 +22,7 @@ function [fmin, keqMin, fmax, keqMax] = ResoMinMax2D(Lx, Ly, r, fs, kc, ki, Nx, 
     Phi = mean(sum((1./(1./kmax(1:Ny-1,:) + 1./kmax(2:Ny,:))).*(TetMax(2:Ny,:)-TetMax(1:Ny-1,:))*(2*dx/dy),2));
 
     keqMax = Phi * (Nx-1) / Ny;
+
+    clear A;
+    clear B;
 end
